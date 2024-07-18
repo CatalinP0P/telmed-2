@@ -1,0 +1,72 @@
+@import '../../../../../_mixin';
+@import '../../../../../_variables';
+
+.categories__card {
+  width: 100%;
+  max-width: 30rem;
+  border-radius: 0.5rem;
+  min-width: none;
+  background-color: $secondary;
+  color: white;
+  transition: all 0.25s ease-out;
+
+  //   &:hover {
+  //     background-color: $secondary-dark;
+  //   }
+
+  //   &:active {
+  //     opacity: 0.25;
+  //   }
+
+  .card__header {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    align-items: center;
+    cursor: pointer;
+
+    .card__title {
+      font-weight: 800;
+
+      @include sm {
+        font-size: 1.5rem;
+      }
+    }
+
+    .card__number {
+      background-color: $secondary-dark;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .card__body {
+    padding: 0.5rem 1rem;
+    background-color: $secondary-dark;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-weight: 600;
+
+    @include sm {
+      font-size: 1.25rem;
+    }
+
+    .body__question {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+  .card__footer {
+    padding: 0.5rem 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: $secondary-dark;
+  }
+}

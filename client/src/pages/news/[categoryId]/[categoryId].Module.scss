@@ -1,0 +1,27 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.newsCategory {
+  @include container;
+  flex: 1;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .newsCategory__title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: -1.5rem;
+  }
+
+  .newsCategory__articles {
+    display: grid;
+    color: black;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

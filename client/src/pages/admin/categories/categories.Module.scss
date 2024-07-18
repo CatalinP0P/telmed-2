@@ -1,0 +1,46 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.categories__card--2 {
+  grid-column: span 12;
+  background-color: white;
+
+  .categories__all {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .card__top {
+      margin-top: -1rem;
+    }
+
+    .accordion__details {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card__text {
+      padding-top: 1rem;
+    }
+
+    .card__title {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+  }
+
+  .categories__add {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: top;
+  }
+}

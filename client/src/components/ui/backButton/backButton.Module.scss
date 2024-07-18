@@ -1,0 +1,28 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.backButton {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  padding-bottom: 1rem;
+  font-size: 1rem;
+  width: fit-content;
+  font-weight: 600;
+
+  * {
+    pointer-events: none;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.2;
+  }
+}

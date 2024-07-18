@@ -1,0 +1,143 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.header {
+  overflow-x: hidden;
+
+  .header__mobile {
+    @include md {
+      display: none;
+    }
+    color: black;
+
+    .body__close {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
+    }
+
+    .header__mobile__button {
+      cursor: pointer;
+    }
+
+    .mobile__overlay {
+      position: absolute;
+      inset: 0;
+      background-color: black;
+      opacity: 0.25;
+      z-index: 10;
+    }
+
+    .mobile__menu {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 4rem 2rem 0 0;
+      background-color: white;
+      z-index: 15;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 75%;
+      max-width: 20rem;
+      // transform: translate(200%, 0%);
+      transition: all 0.25s ease-out;
+      align-items: end;
+
+      &__active {
+        display: flex;
+      }
+
+      .mobile__link {
+        font-size: 1.25rem;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .account__name {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .header__container {
+    @include container;
+    display: flex;
+    background-color: $secondary;
+    border-radius: 0 0 1rem 1rem;
+    padding: 1rem 2rem;
+    flex-direction: row;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+
+    .header__logo {
+      width: 12rem;
+      margin: -2rem 0;
+      margin-top: -1.5rem;
+      margin-left: -1rem;
+      cursor: pointer;
+
+      @include md {
+        width: 16rem;
+      }
+    }
+
+    .header__body {
+      flex-direction: row;
+      gap: 2.5rem;
+      align-items: center;
+      display: none;
+
+      @include md {
+        display: flex;
+      }
+
+      .header__links {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.25rem;
+
+        @include md {
+          display: flex;
+        }
+      }
+
+      .header__link {
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.125s ease-out;
+        user-select: none;
+
+        &:hover {
+          color: $primary;
+        }
+
+        &:active {
+          opacity: 0.25;
+        }
+      }
+
+      .header__account {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.75rem;
+
+        @include md {
+          display: flex;
+          font-size: 1rem;
+        }
+
+        .account__name {
+          font-weight: 900;
+        }
+      }
+    }
+  }
+}

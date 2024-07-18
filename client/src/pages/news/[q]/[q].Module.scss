@@ -1,0 +1,31 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.newsQ__container {
+  @include container;
+  padding: 2rem 0;
+
+  .newsQ__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    @include md {
+      font-size: 2rem;
+    }
+
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  .newsQ__articles {
+    padding-top: 1.5rem;
+    display: grid;
+    color: black;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

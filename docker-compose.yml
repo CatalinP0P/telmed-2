@@ -1,0 +1,30 @@
+version: '1'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    depends_on:
+      - server
+    environment:
+      REACT_APP_SERVER_URL: "${SERVER_URL}"
+      PORT: "${CLIENT_PORT}"
+      REACT_APP_FIREBASE_API_KEY: "${FIREBASE_API_KEY}"
+      REACT_APP_FIREBASE_AUTH_DOMAIN: "${FIREBASE_AUTH_DOMAIN}"
+      REACT_APP_FIREBASE_PROJECT_ID: "${FIREBASE_PROJECT_ID}"
+      REACT_APP_FIREBASE_STORAGE_BUCKET: "${FIREBASE_STORAGE_BUCKET}"
+      REACT_APP_FIREBASE_MESSAGING_SENDER_ID: "${FIREBASE_MESSAGING_SENDER_ID}"
+      REACT_APP_FIREBASE_APP_ID: "${FIREBASE_APP_ID}"
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      SERVER_PORT: "${SERVER_PORT}"
+      DATABASE_URL: "${DATABASE_URL}"
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"

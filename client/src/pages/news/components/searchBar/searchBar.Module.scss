@@ -1,0 +1,12 @@
+@import '../../../../_mixin';
+@import '../../../../_variables';
+
+.news__search {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 2rem;
+}

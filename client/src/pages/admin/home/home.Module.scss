@@ -1,0 +1,9 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.adminHome__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  grid-column: span 12;
+}

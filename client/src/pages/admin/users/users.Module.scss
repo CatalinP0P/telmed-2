@@ -1,0 +1,99 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.admin__users {
+  grid-column: span 12;
+  font-size: 0.75rem;
+
+  @include md {
+    font-size: 1.25rem;
+  }
+
+  .users__table {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+
+    .table__button {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      font-size: 0.75rem;
+
+      @include md {
+        font-size: 1.25rem;
+      }
+
+      &--delete {
+        color: red;
+      }
+
+      &--ban {
+        color: orange;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 0.2;
+      }
+    }
+
+    .table__col {
+      border: 1px solid black;
+      padding: 1rem;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &--1 {
+        grid-column: span 1;
+      }
+
+      &--2 {
+        grid-column: span 2;
+      }
+
+      &--3 {
+        grid-column: span 3;
+      }
+
+      &--4 {
+        grid-column: span 4;
+      }
+
+      &--5 {
+        grid-column: span 5;
+      }
+
+      &--6 {
+        grid-column: span 6;
+      }
+
+      &--7 {
+        grid-column: span 7;
+      }
+
+      background-color: $primary;
+    }
+
+    .table__header {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+
+      .table__col {
+        background-color: $primary-dark;
+        color: white;
+      }
+    }
+
+    .table__row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+}

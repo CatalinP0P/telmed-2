@@ -1,0 +1,25 @@
+@import '../../../../_mixin';
+@import '../../../../_variables';
+
+.adminPageLayout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 1rem;
+  border-top: 1px solid $secondary;
+  border-bottom: 1px solid $secondary;
+
+  @include md {
+    flex-direction: row;
+  }
+
+  .adminPageLayout__body {
+    max-width: $container-width;
+    flex: 1;
+    background-color: $primary;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 1rem;
+    gap: 1rem;
+  }
+}

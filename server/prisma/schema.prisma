@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          Int    @id @unique @default(autoincrement())
+  title       String
+  description String @db.VarChar(900)
+  dieseases   String @db.VarChar(900)
+}
+
+model Question {
+  id         Int      @id @unique @default(autoincrement())
+  userId     String
+  categoryId Int
+  text       String
+  date       DateTime @default(now())
+}
+
+model QuestionResponse {
+  id         Int      @id @unique @default(autoincrement())
+  userId     String
+  questionId Int
+  text       String
+  date       DateTime @default(now())
+}
+
+model Medic {
+  id             Int     @id @default(autoincrement())
+  userId         String  @unique
+  verified       Boolean @default(false)
+  specialisation String
+  categoriesJSON String
+  unit           String
+  phoneNumber    String
+  name           String?
+  diplomaURL     String?
+  website        String?
+  location       String?
+}
+
+model MedicReview {
+  id      Int      @id @unique @default(autoincrement())
+  medicId String
+  userId  String
+  text    String
+  rating  Int
+  date    DateTime @default(now())
+}
+
+model NewsArticle {
+  id         Int     @id @unique @default(autoincrement())
+  categoryId Int
+  userId     String
+  title      String
+  text       String  @db.Text
+  imageURL   String?
+  videoURL   String?
+  audioURL   String?
+}
+
+model Admin {
+  id     Int    @id @unique @default(autoincrement())
+  userId String @unique
+}
+
+model UserBlocked {
+  id     Int    @id @unique @default(autoincrement())
+  userId String @unique
+}

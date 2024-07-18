@@ -1,0 +1,31 @@
+@import '../../../../_mixin';
+@import '../../../../_variables';
+
+.medic__all {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .medic__title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: -1rem;
+  }
+
+  .medic__card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .card__name {
+      font-weight: 800;
+      font-size: 1.25rem;
+    }
+
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+}

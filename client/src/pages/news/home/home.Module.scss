@@ -1,0 +1,80 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.news {
+  @include container;
+  padding: 2rem 0;
+  flex: 1;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  .news__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .news__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .category__card {
+      background-color: $secondary;
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      max-width: 30rem;
+      width: 100%;
+      color: white;
+      font-weight: 800;
+      font-size: 1rem;
+
+      @include sm {
+        font-size: 1.5rem;
+      }
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+
+      &:hover {
+        background-color: $secondary-dark;
+      }
+
+      &:active {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  .add__article {
+    margin-top: 2rem;
+    color: black;
+    background-color: $black-5;
+    border-radius: 0.5rem;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .add__article__title {
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .file__input {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .input__label {
+        font-weight: 600;
+      }
+
+      .input__buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+      }
+    }
+  }
+}

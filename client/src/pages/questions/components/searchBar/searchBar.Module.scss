@@ -1,0 +1,10 @@
+@import '../../../../_mixin';
+@import '../../../../_variables';
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  width: 100%;
+}

@@ -1,0 +1,32 @@
+@import '../../../../_mixin';
+@import '../../../../_variables';
+
+.adminNav {
+  flex-direction: column;
+  display: flex;
+  background-color: $primary-dark;
+
+  @include md {
+    width: 30%;
+    max-width: 20rem;
+  }
+
+  .nav__item {
+    padding: 1rem 2rem;
+    font-weight: 700;
+    transition: all 0.25s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &__active {
+      color: $primary;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

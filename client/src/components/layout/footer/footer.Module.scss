@@ -1,0 +1,39 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.footer {
+  padding: 1rem 0;
+  background-color: $primary-dark;
+
+  .footer__container {
+    @include container;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .footer__copyright {
+      opacity: 0.6;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+
+      .link {
+        color: $primary;
+        cursor: pointer;
+        transition: all 0.25s ease-out;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        &:active {
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+}

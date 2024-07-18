@@ -1,0 +1,42 @@
+@import '../../../../_mixin';
+@import '../../../../_variables';
+
+.article__card {
+  padding: 1rem;
+  background-color: $black-5;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .card__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  .card__text {
+    font-weight: 600;
+    opacity: 0.8;
+    max-height: 20rem;
+    overflow: auto;
+    background-color: $black-5;
+  }
+
+  .card__media {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card__image,
+    .card__video {
+      border-radius: 0.5rem;
+      cursor: pointer;
+      width: 100%;
+      background-color: $black-15;
+    }
+  }
+}
