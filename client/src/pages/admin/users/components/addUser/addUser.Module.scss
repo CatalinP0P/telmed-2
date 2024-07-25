@@ -1,0 +1,27 @@
+@import '../../../../../_mixin';
+@import '../../../../../_variables';
+
+.addUser__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .form__email {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+
+    label {
+      font-weight: 600;
+    }
+  }
+
+  .form__email__area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1rem;
+  }
+}

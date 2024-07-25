@@ -52,10 +52,16 @@ export const add = async (userId, categoryId, text) => {
   return response
 }
 
+const removeAllQuestionsFromUser = async (userId) => {
+  const response = await prisma.question.deleteMany({ where: { userId } })
+  return response
+}
+
 export default {
   getAll,
   getById,
   getByText,
   getByCategory,
   add,
+  removeAllQuestionsFromUser,
 }

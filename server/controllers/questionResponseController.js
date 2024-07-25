@@ -17,4 +17,29 @@ const create = async (userId, questionId, text) => {
   return response
 }
 
-export default { getFromQuestion, create }
+const removeAllFromUser = async (userId) => {
+  const response = await prisma.questionResponse.deleteMany({
+    where: {
+      userId,
+    },
+  })
+
+  return response
+}
+
+const removeAllFromQuestion = async (questionId) => {
+  const response = await prisma.questionResponse.deleteMany({
+    where: {
+      questionId,
+    },
+  })
+
+  return response
+}
+
+export default {
+  getFromQuestion,
+  create,
+  removeAllFromUser,
+  removeAllFromQuestion,
+}

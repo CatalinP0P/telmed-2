@@ -5,10 +5,17 @@ import useUsers from 'hooks/useUsers'
 import './users.Module.scss'
 import userService from 'services/userService'
 import { useAuth } from 'context/AuthContext'
+import AddUser from './components/addUser/addUser'
+import { api } from 'utils/api'
 
 export default function AdminUsers() {
   const { data: users, loading } = useUsers()
   const { currentUser } = useAuth()
+
+  const deleteUser = async (userId: string) => {
+    await api.delete('/admin/deleteAccount/' + userId)
+    window.location.reload()
+  }
 
   useEffect(() => {
     if (loading) return
@@ -33,7 +40,10 @@ export default function AdminUsers() {
               <label className="table__col table__col--1">{key}</label>
               <label className="table__col table__col--7">{user.email}</label>
               <label className="table__col table__col--2">
-                <button className="table__button table__button--delete">
+                <button
+                  className="table__button table__button--delete"
+                  onClick={() => deleteUser(user.uid)}
+                >
                   Sterge
                 </button>
               </label>
@@ -54,6 +64,9 @@ export default function AdminUsers() {
             </div>
           ))}
         </div>
+      </AdminCard>
+      <AdminCard title="Adauga Utilizator">
+        <AddUser />
       </AdminCard>
     </AdminPageLayout>
   )

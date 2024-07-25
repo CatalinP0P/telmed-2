@@ -27,7 +27,21 @@ export const create = async (userId, medicId, rating, text) => {
   return response
 }
 
+export const removeAllFromMedic = async (userId) => {
+  const response = await prisma.medicReview.deleteMany({
+    where: { medicId: userId },
+  })
+  return response
+}
+
+export const removeAllFromUser = async (userId) => {
+  const response = await prisma.medicReview.deleteMany({ where: { userId } })
+  return response
+}
+
 export default {
   getMedicReviews,
   create,
+  removeAllFromMedic,
+  removeAllFromUser,
 }

@@ -35,6 +35,7 @@ export const create = async (data) => {
 
 export const remove = async (userId) => {
   const response = await prisma.medic.delete({ where: { userId } })
+  await MedicReviewController.removeAllFromMedic(userId)
   return response
 }
 
