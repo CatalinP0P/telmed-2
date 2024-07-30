@@ -40,7 +40,7 @@ router.post('/createAccount', async (req, res) => {
     const response = await admin.auth().createUser({ email, password })
     res.json(response)
   } catch (err) {
-    res.status(400).json('Email deja folosit')
+    res.status(400).json(err.message)
   }
 })
 
