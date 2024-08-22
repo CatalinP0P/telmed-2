@@ -21,7 +21,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const { title, description, dieseases } = req.body
   try {
-    const response = await categoryController.add(title, description, dieseases)
+    const response = await categoryController.add(
+      title.trim(),
+      (description + '').trim(),
+      dieseases.trim(),
+    )
     res.json(response)
   } catch (err) {
     res.status(400).json(err)

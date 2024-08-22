@@ -18,7 +18,7 @@ model Question {
   id         Int      @id @unique @default(autoincrement())
   userId     String
   categoryId Int
-  text       String
+  text       String   @db.VarChar(900)
   date       DateTime @default(now())
 }
 

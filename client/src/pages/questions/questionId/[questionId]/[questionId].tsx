@@ -17,6 +17,7 @@ export default function QuestionQuestionId() {
 
   const sendResponse = async () => {
     if (currentUser == null) return
+    if (response.trim() == '') return
 
     const authToken = await currentUser?.getIdToken()
     await questionService.addResponse(authToken, parseInt(id + ''), response)

@@ -107,6 +107,7 @@ export default function NewsHome() {
     e.preventDefault()
 
     if (formData.categoryId == '') return
+    if (formData.title.trim() == '' || formData.text.trim() == '') return
 
     const body = new FormData()
     body.append('categoryId', formData.categoryId)
@@ -134,6 +135,112 @@ export default function NewsHome() {
 
   return (
     <div className="news">
+      <IsMedic>
+        <form className="add__article" onSubmit={onSubmit}>
+          <label className="add__article__title">Adauga un articol</label>
+          <FormControl variant="outlined">
+            <InputLabel id="demo-simple-select-label">Categorie</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              fullWidth
+              value={formData.categoryId}
+              label="Categorie"
+              onChange={(e) =>
+                //eslint-disable-next-line
+                setFormData((old: any) => {
+                  return { ...old, categoryId: e.target.value }
+                })
+              }
+            >
+              {/* eslint-disable-next-line */}
+              {data.map((category: any) => {
+                return (
+                  <MenuItem value={category.id} key={category.id}>
+                    {category.title}
+                  </MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
+
+          <TextField
+            label="Titlu"
+            name="title"
+            value={formData.title}
+            onChange={onChange}
+            fullWidth
+            required
+          ></TextField>
+          <TextField
+            label="Descriere"
+            multiline
+            name="text"
+            value={formData.text}
+            onChange={onChange}
+            required
+            fullWidth
+          ></TextField>
+          <div className="file__input">
+            <label className="input__label">Imagine</label>
+            <input
+              type="file"
+              onChange={(e) =>
+                //eslint-disable-next-line
+                setFormData((old: any) => {
+                  if (e.target.files == null) return
+
+                  return { ...old, image: e.target.files[0] }
+                })
+              }
+            />
+          </div>
+
+          <div className="file__input">
+            <label className="input__label">Video</label>
+            <input
+              type="file"
+              onChange={(e) =>
+                //eslint-disable-next-line
+                setFormData((old: any) => {
+                  if (e.target.files == null) return
+
+                  return { ...old, video: e.target.files[0] }
+                })
+              }
+            />
+          </div>
+          <div className="file__input">
+            <label className="input__label">Audio</label>
+            <div className="input__buttons">
+              <button
+                style={{ width: 'fit-content', padding: '0 .25rem' }}
+                type="button"
+                onClick={recording ? stopRecording : startRecording}
+              >
+                {recording ? 'Stop Recording' : 'Start Recording'}
+              </button>
+              {formData.audio && (
+                <button
+                  type="button"
+                  style={{ width: 'fit-content', padding: '0 .25rem' }}
+                  onClick={removeAudio}
+                >
+                  Sterge
+                </button>
+              )}
+            </div>
+            {formData.audio && (
+              <div>
+                <audio src={formData.audio} controls />
+              </div>
+            )}
+          </div>
+
+          <Button variant="contained" type="submit">
+            Adauga
+          </Button>
+        </form>
+      </IsMedic>
       <label className="news__title">Cauta</label>
       <SearchBar />
       <label className="news__title">Noutati</label>
@@ -152,113 +259,6 @@ export default function NewsHome() {
             </div>
           )
         })}
-
-        <IsMedic>
-          <form className="add__article" onSubmit={onSubmit}>
-            <label className="add__article__title">Adauga un articol</label>
-            <FormControl variant="outlined">
-              <InputLabel id="demo-simple-select-label">Categorie</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                fullWidth
-                value={formData.categoryId}
-                label="Categorie"
-                onChange={(e) =>
-                  //eslint-disable-next-line
-                  setFormData((old: any) => {
-                    return { ...old, categoryId: e.target.value }
-                  })
-                }
-              >
-                {/* eslint-disable-next-line */}
-                {data.map((category: any) => {
-                  return (
-                    <MenuItem value={category.id} key={category.id}>
-                      {category.title}
-                    </MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
-
-            <TextField
-              label="Titlu"
-              name="title"
-              value={formData.title}
-              onChange={onChange}
-              fullWidth
-              required
-            ></TextField>
-            <TextField
-              label="Descriere"
-              multiline
-              name="text"
-              value={formData.text}
-              onChange={onChange}
-              required
-              fullWidth
-            ></TextField>
-            <div className="file__input">
-              <label className="input__label">Imagine</label>
-              <input
-                type="file"
-                onChange={(e) =>
-                  //eslint-disable-next-line
-                  setFormData((old: any) => {
-                    if (e.target.files == null) return
-
-                    return { ...old, image: e.target.files[0] }
-                  })
-                }
-              />
-            </div>
-
-            <div className="file__input">
-              <label className="input__label">Video</label>
-              <input
-                type="file"
-                onChange={(e) =>
-                  //eslint-disable-next-line
-                  setFormData((old: any) => {
-                    if (e.target.files == null) return
-
-                    return { ...old, video: e.target.files[0] }
-                  })
-                }
-              />
-            </div>
-            <div className="file__input">
-              <label className="input__label">Audio</label>
-              <div className="input__buttons">
-                <button
-                  style={{ width: 'fit-content', padding: '0 .25rem' }}
-                  type="button"
-                  onClick={recording ? stopRecording : startRecording}
-                >
-                  {recording ? 'Stop Recording' : 'Start Recording'}
-                </button>
-                {formData.audio && (
-                  <button
-                    type="button"
-                    style={{ width: 'fit-content', padding: '0 .25rem' }}
-                    onClick={removeAudio}
-                  >
-                    Sterge
-                  </button>
-                )}
-              </div>
-              {formData.audio && (
-                <div>
-                  <audio src={formData.audio} controls />
-                </div>
-              )}
-            </div>
-
-            <Button variant="contained" type="submit">
-              Adauga
-            </Button>
-          </form>
-        </IsMedic>
       </div>
     </div>
   )

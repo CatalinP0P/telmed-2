@@ -20,6 +20,7 @@ export default function QuestionCategoryID() {
   const addQuestion = async () => {
     if (authLoading) return
     if (currentUser == null) navigate('/auth/login')
+    if (newQuestion.trim() == '') return
 
     const authToken = (await currentUser?.getIdToken()) as string
 
