@@ -14,8 +14,12 @@ router.get('/all', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params
-  const category = await categoryController.getById(parseInt(id))
-  res.json(category)
+  try {
+    const category = await categoryController.getById(parseInt(id))
+    res.json(category)
+  } catch {
+    res.sendStatus(400)
+  }
 })
 
 router.post('/', async (req, res) => {

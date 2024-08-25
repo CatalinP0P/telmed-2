@@ -9,18 +9,30 @@ import userController from '../controllers/userController.js'
 const router = express.Router()
 
 router.get('/', firebaseAuthorization, async (req, res) => {
-  const id = req.user.uid
-  return res.json(await adminController.isAdmin(id))
+  try {
+    const id = req.user.uid
+    return res.json(await adminController.isAdmin(id))
+  } catch (err) {
+    res.json(err).status(400)
+  }
 })
 
 router.get('/all', async (req, res) => {
-  const admins = await adminController.getAll()
-  res.json(admins)
+  try {
+    const admins = await adminController.getAll()
+    res.json(admins)
+  } catch {
+    res.sendStatus(400)
+  }
 })
 
 router.post('/add/:id', async (req, res) => {
-  const { id } = req.params
-  return res.json(await adminController.add(id))
+  try {
+    const { id } = req.params
+    return res.json(await adminController.add(id))
+  } catch {
+    res.sendStatus(400)
+  }
 })
 
 router.delete('/:id', async (req, res) => {
@@ -82,27 +94,33 @@ Echipa TelMed
 
   `
 
-  sendMail(
-    email,
-    'Invitatie de a Utiliza Aplicația TelMed - Forumul Tău pentru Întrebări Medicale!',
-    body,
-  )
-
-  res.json('Mail sent')
+  try {
+    sendMail(
+      email,
+      'Invitatie de a Utiliza Aplicația TelMed - Forumul Tău pentru Întrebări Medicale!',
+      body,
+    )
+    res.json('Mail sent')
+  } catch {
+    res.sendStatus(400)
+  }
 })
 
 router.delete('/deleteAccount/:userId', async (req, res) => {
   const { userId } = req.params
+  try {
+    const response = await userController.remove(userId)
+    const isMedic =
+      (await medicController.getByUserId(userId)) != null ? true : false
 
-  const response = await userController.remove(userId)
-  const isMedic =
-    (await medicController.getByUserId(userId)) != null ? true : false
+    console.log(isMedic)
 
-  console.log(isMedic)
+    if (isMedic) await medicController.remove(userId)
 
-  if (isMedic) await medicController.remove(userId)
-
-  res.json(response)
+    res.json(response)
+  } catch {
+    res.sendStatus(400)
+  }
 })
 
 export default router
