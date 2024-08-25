@@ -7,7 +7,6 @@ router.post('/contact', async (req, res) => {
   const { name, email, phoneNumber, text } = req.body
 
   const body = `Nume: ${name}\nEmail:${email}\nTel:${phoneNumber}\n\n${text}`
-  console.log(body)
 
   try {
     sendMail(

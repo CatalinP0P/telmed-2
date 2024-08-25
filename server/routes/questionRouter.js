@@ -64,7 +64,6 @@ router.get('/category/:id', async (req, res) => {
       const responses = await questionResponseController.getFromQuestion(
         questions[i].id,
       )
-      console.log(responses)
 
       for (var y = 0; y < responses.length; y++) {
         const user = await userController.getById(responses[y].userId)
@@ -79,8 +78,7 @@ router.get('/category/:id', async (req, res) => {
       delete questions[i].userId
     }
     res.json(questions)
-  } catch (err) {
-    console.log(err)
+  } catch {
     res.sendStatus(400)
   }
 })

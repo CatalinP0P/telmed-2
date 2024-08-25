@@ -113,8 +113,6 @@ router.delete('/deleteAccount/:userId', async (req, res) => {
     const isMedic =
       (await medicController.getByUserId(userId)) != null ? true : false
 
-    console.log(isMedic)
-
     if (isMedic) await medicController.remove(userId)
 
     res.json(response)

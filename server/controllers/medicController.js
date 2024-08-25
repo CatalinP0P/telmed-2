@@ -10,7 +10,6 @@ export const getAll = async () => {
     const reviews = await MedicReviewController.getMedicReviews(
       medics[i].userId,
     )
-    console.log(reviews)
     medics[i] = { ...medics[i], reviews }
   }
 

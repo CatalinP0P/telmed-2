@@ -53,10 +53,6 @@ router.post(
     const video = req.files['video'] ? req.files['video'][0].path : null
     const audio = req.files['audio'] ? req.files['audio'][0].path : null
 
-    console.log('IMAGE', image)
-    console.log('VIDEO', video)
-    console.log('AUDIO', audio)
-
     try {
       const response = await articleController.create(
         user.uid,

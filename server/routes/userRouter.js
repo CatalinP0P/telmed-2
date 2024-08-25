@@ -11,7 +11,6 @@ router.get('/all', async (req, res) => {
     for (var i = 0; i < users.length; i++) {
       const blocked = await userBlockedController.isBlocked(users[i].uid)
       users[i] = { ...users[i], blocked }
-      console.log(blocked)
     }
 
     res.json(users)
