@@ -9,9 +9,10 @@ config({ path: envPath })
 
 const user = process.env.MAIL_USER
 const pass = process.env.MAIL_PASS
+const host = process.env.MAIL_HOST
 
 export const mail = nodemailer.createTransport({
-  host: 'mail.usd.co.ro',
+  host: host,
   port: 465,
   auth: {
     user: user,
