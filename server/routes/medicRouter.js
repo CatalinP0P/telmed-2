@@ -42,23 +42,36 @@ router.get('/all', async (req, res) => {
   try {
     const all = await medicController.getAll()
 
-    for (var i = 0; i < all.length; i++) {
+    const medicPromises = all.map(async (medic) => {
       try {
-        const user = await userController.getById(all[i].userId)
+        const user = await userController.getById(medic.userId)
 
-        all[i] = {
-          ...all[i],
-          user: user,
+        return {
+          ...medic,
+          user,
         }
       } catch {
-        delete all[i]
+        // Returning null if an error occurs to filter out later
+        return null
       }
+    })
 
-      delete all[i].userId
-    }
+    // Wait for all promises to resolve
+    let medicsWithUsers = await Promise.all(medicPromises)
 
-    res.json(all)
-  } catch {
+    // Filter out any null results (due to errors in user fetching)
+    medicsWithUsers = medicsWithUsers.filter((medic) => medic !== null)
+
+    // Remove userId from the final result
+    medicsWithUsers = medicsWithUsers.map((medic) => {
+      //eslint-disable-next-line
+      const { userId, ...rest } = medic
+      return rest
+    })
+
+    res.json(medicsWithUsers)
+  } catch (err) {
+    console.error(err)
     res.sendStatus(400)
   }
 })

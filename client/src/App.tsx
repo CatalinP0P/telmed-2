@@ -1,6 +1,6 @@
 import React from 'react'
 import PageLayout from 'components/layout/pageLayout/pageLayout'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import Home from 'pages/home/home'
 import Register from 'pages/auth/register/register'
 import Login from 'pages/auth/login/login'
@@ -27,7 +27,7 @@ import AdminMedic from 'pages/admin/medic/medic'
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <HashRouter>
         <PageLayout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -70,7 +70,7 @@ export default function App() {
             <Route path="/myprofile" element={<MyProfileHome />} />
           </Routes>
         </PageLayout>
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   )
 }
