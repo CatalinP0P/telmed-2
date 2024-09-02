@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import AdminPageLayout from '../components/adminPageLayout/adminPageLayout'
 import AdminCard from '../components/adminCard/adminCard'
 import useUsers from 'hooks/useUsers'
@@ -9,19 +9,13 @@ import AddUser from './components/addUser/addUser'
 import { api } from 'utils/api'
 
 export default function AdminUsers() {
-  const { data: users, loading } = useUsers()
+  const { data: users } = useUsers()
   const { currentUser } = useAuth()
 
   const deleteUser = async (userId: string) => {
     await api.delete('/admin/deleteAccount/' + userId)
     window.location.reload()
   }
-
-  useEffect(() => {
-    if (loading) return
-
-    console.log(users)
-  }, [loading])
 
   return (
     <AdminPageLayout>

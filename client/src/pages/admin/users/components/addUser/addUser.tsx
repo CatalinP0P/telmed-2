@@ -17,6 +17,7 @@ export default function AddUser() {
       await api.post('/admin/createAccount', {
         email,
         password,
+        text: mailBody,
       })
       // eslint-disable-next-line
     } catch (err: any) {
