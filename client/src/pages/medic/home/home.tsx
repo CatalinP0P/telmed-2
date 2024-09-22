@@ -1,7 +1,7 @@
 import useMedic from 'hooks/useMedic'
 import CheckIcon from '@mui/icons-material/Check'
 import CloseIcon from '@mui/icons-material/Close'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './home.Module.scss'
 import {
@@ -21,6 +21,15 @@ export default function MedicHome() {
   const { data } = useMedic()
   const navigate = useNavigate()
   const { data: categories } = useCategories()
+  const [open, setOpen] = React.useState(false)
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
 
   const [selectedCategories, setCategories] = useState<string[]>([])
 
@@ -28,6 +37,12 @@ export default function MedicHome() {
     const {
       target: { value },
     } = event
+    // eslint-disable-next-line
+    if ((value as any[]).indexOf('Filtreaza') != -1) {
+      handleClose()
+      return
+    }
+
     setCategories(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
@@ -58,12 +73,6 @@ export default function MedicHome() {
     return medics
   }
 
-  useEffect(() => {
-    console.log(getFilteredMedic())
-  }, [selectedCategories])
-
-  console.log(categories)
-
   return (
     <div className="medicHome">
       {/* <label className="medicHome__title">
@@ -92,7 +101,13 @@ export default function MedicHome() {
               onChange={handleChange}
               renderValue={(selected) => selected.join(', ')}
               size="small"
+              open={open}
+              onClose={handleClose}
+              onOpen={handleOpen}
             >
+              <MenuItem value="Filtreaza">
+                <label>Filtreaza</label>
+              </MenuItem>
               {/* eslint-disable-next-line */}
               {categories?.map((item: any) => {
                 return (

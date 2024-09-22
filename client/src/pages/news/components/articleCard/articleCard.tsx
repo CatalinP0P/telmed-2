@@ -1,13 +1,41 @@
 import React from 'react'
 import { SERVER_URL } from 'utils/api'
 import './articleCard.Module.scss'
+import { useNavigate } from 'react-router-dom'
+import { Edit } from '@mui/icons-material'
+import { useAuth } from 'context/AuthContext'
 
-// eslint-disable-next-line
-export default function ArticleCard({ article }: { article: any }) {
-  console.log(article)
+export default function ArticleCard({
+  article,
+  navigateTo,
+}: {
+  // eslint-disable-next-line
+  article: any
+  navigateTo?: string
+}) {
+  const { currentUser } = useAuth()
+  const navigate = useNavigate()
 
   return (
-    <div key={article.id} className="article__card">
+    <div
+      key={article.id}
+      className={
+        'article__card ' + (navigateTo != null ? 'article__card--click' : '')
+      }
+      onClick={() => {
+        if (navigateTo) navigate(navigateTo + '')
+      }}
+    >
+      {currentUser?.uid === article.userId && (
+        <div
+          className="card__edit__icon"
+          onClick={() => {
+            navigate('/news/edit/' + article.id)
+          }}
+        >
+          <Edit fontSize="inherit" color="inherit" />
+        </div>
+      )}
       <label className="card__title">{article.title}</label>
       <p className="card__text">{article.text}</p>
       <div className="card__media">

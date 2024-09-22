@@ -57,6 +57,24 @@ const removeAllQuestionsFromUser = async (userId) => {
   return response
 }
 
+const getQuestionsFromUser = async (userId) => {
+  const response = await prisma.question.findMany({
+    where: {
+      userId,
+    },
+  })
+
+  return response
+}
+
+const update = async (id, data) => {
+  const response = await prisma.question.updateMany({
+    where: { id: parseInt(id) },
+    data,
+  })
+  return response
+}
+
 export default {
   getAll,
   getById,
@@ -64,4 +82,6 @@ export default {
   getByCategory,
   add,
   removeAllQuestionsFromUser,
+  getQuestionsFromUser,
+  update,
 }

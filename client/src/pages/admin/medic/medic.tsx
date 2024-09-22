@@ -3,7 +3,7 @@ import React from 'react'
 import AdminPageLayout from '../components/adminPageLayout/adminPageLayout'
 import AdminCard from '../components/adminCard/adminCard'
 import './medic.Module.scss'
-import { Check, Close } from '@mui/icons-material'
+import { Check, Close, Edit } from '@mui/icons-material'
 import adminService from 'services/adminService'
 import { useAuth } from 'context/AuthContext'
 import { useNavigate } from 'react-router-dom'
@@ -30,6 +30,7 @@ export default function AdminMedic() {
             <label className="table__col table__col--2">Nume</label>
             <label className="table__col table__col--2">Verificat</label>
             <label className="table__col table__col--2">Verifica</label>
+            <label className="table__col table__col--1">Edit</label>
           </div>
 
           {/* eslint-disable-next-line */}
@@ -64,6 +65,16 @@ export default function AdminMedic() {
                     Verifica
                   </button>
                 )}
+              </label>
+              <label className="table__col table__col--1">
+                <div
+                  className="table__col--edit"
+                  onClick={() =>
+                    navigate('/admin/medic/edit/' + medic.user.uid)
+                  }
+                >
+                  <Edit color="inherit" />
+                </div>
               </label>
             </div>
           ))}

@@ -1,0 +1,58 @@
+@import '../../../../../_mixin';
+@import '../../../../../_variables';
+
+.myAnswers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+
+  .myAnswers__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  .myAnswers__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .answer {
+      background-color: $primary-dark;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease-out;
+
+      * {
+        pointer-events: none;
+      }
+
+      .answer__question {
+        opacity: 0.6;
+        font-size: 0.75rem;
+      }
+
+      .answer__body {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        padding-left: 0.5rem;
+        align-items: center;
+
+        .answer__icon {
+          font-size: 1.25rem;
+          transform: translateY(5%);
+        }
+      }
+
+      &:active {
+        opacity: 0.4;
+      }
+    }
+  }
+}

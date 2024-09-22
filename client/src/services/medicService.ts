@@ -56,6 +56,12 @@ export const addReview = async (
   return response.data
 }
 
+const edit = async (authToken: string, userId: unknown, data: unknown) => {
+  const api = getAuthorizedApi(authToken)
+  const response = await api.post('/medic/edit/' + userId, data)
+  return response.data
+}
+
 export default {
   getAll,
   getFromId,
@@ -64,4 +70,5 @@ export default {
   isMedic,
   addReview,
   updateData,
+  edit,
 }

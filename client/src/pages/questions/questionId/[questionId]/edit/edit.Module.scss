@@ -1,0 +1,10 @@
+@import '../../../../../_mixin';
+@import '../../../../../_variables';
+
+.questionQuestionIdEdit {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+}

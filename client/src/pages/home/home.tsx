@@ -20,8 +20,12 @@ export default function Home() {
       </label>
 
       <div>
-        <Button variant="outlined" onClick={() => navigate('/questions')}>
-          Intreaba acum
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => navigate('/questions')}
+        >
+          Intreaba un specialist!
         </Button>
       </div>
     </div>

@@ -1,0 +1,28 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.adminApproveArticles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .adminApproveArticles__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: $secondary;
+
+    b {
+      text-decoration: underline;
+    }
+  }
+
+  .adminApproveArticles__body {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+    @include lg {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -43,23 +43,6 @@
     flex: 1;
     padding-top: 2rem;
   }
-
-  .questions__card {
-    padding: 1rem 2rem;
-    background-color: $secondary;
-    color: white;
-    border-radius: 0.5rem;
-    transition: all 0.25s ease-out;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $secondary-dark;
-    }
-
-    &:active {
-      opacity: 0.2;
-    }
-  }
 }
 
 .overlay {

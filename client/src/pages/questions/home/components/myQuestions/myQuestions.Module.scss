@@ -1,0 +1,29 @@
+@import '../../../../../_mixin';
+@import '../../../../../_variables';
+
+.questionHome__myquestions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 0;
+
+  .myquestions__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .myquestions__body {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.5rem;
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include xl {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

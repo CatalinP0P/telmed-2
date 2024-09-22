@@ -2,7 +2,7 @@ import { ExpandMore } from '@mui/icons-material'
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import useMedicFromCategory from 'hooks/useMedicFromCategory'
 import React from 'react'
-import './categoryCard.Module.scss'
+import './categoryCardComplex.Module.scss'
 
 //eslint-disable-next-line
 export default function CategoryCard({ item }: { item: any }) {

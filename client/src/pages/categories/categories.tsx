@@ -1,7 +1,7 @@
 import useCategories from 'hooks/useCategories'
 import React from 'react'
 import './categories.Module.scss'
-import CategoryCard from './components/categoryCard/categoryCard'
+import CategoryCardComplex from './components/categoryCardComplex/categoryCardComplex'
 
 export default function Categories() {
   const { data } = useCategories()
@@ -10,7 +10,7 @@ export default function Categories() {
       <label className="categories__title">Lista de categorii medicale</label>
       {/* eslint-disable-next-line */}
       {data.map((item: any) => {
-        return <CategoryCard key={item.id} item={item} />
+        return <CategoryCardComplex key={item.id} item={item} />
       })}
     </div>
   )

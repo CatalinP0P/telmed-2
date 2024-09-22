@@ -1,0 +1,8 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.admin__articles__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

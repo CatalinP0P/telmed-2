@@ -38,6 +38,19 @@ router.post('/update', firebaseAuthorization, async (req, res) => {
   }
 })
 
+router.post('/edit/:id', firebaseAuthorization, async (req, res) => {
+  try {
+    const { id: userId } = req.params
+    const data = req.body
+
+    const response = await medicController.updateData(userId, data)
+    res.json(response)
+  } catch (err) {
+    console.log(err)
+    res.sendStatus(400)
+  }
+})
+
 router.get('/all', async (req, res) => {
   try {
     const all = await medicController.getAll()

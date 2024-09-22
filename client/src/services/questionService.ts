@@ -36,6 +36,29 @@ const addResponse = async (
   return response.data
 }
 
+const getMyQuestions = async (authToken: string) => {
+  const api = getAuthorizedApi(authToken)
+  const response = await api.get('/question/myQuestions')
+  return response.data
+}
+
+const getMyAnswers = async (authToken: string) => {
+  const api = getAuthorizedApi(authToken)
+  const response = await api.get('/question/myAnswers')
+  return response.data
+}
+
+const update = async (authToken: string, questionId: number, data: unknown) => {
+  const api = getAuthorizedApi(authToken)
+  const response = await api.post('/question/edit/' + questionId, data)
+  return response.data
+}
+
+const getResponseById = async (responseId: string) => {
+  const response = await api.get('/question/response/' + responseId)
+  return response.data
+}
+
 export default {
   getFromCategory,
   getByCategory,
@@ -43,4 +66,8 @@ export default {
   getById,
   add,
   addResponse,
+  getMyQuestions,
+  getMyAnswers,
+  update,
+  getResponseById,
 }

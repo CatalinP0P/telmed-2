@@ -1,0 +1,36 @@
+@import '../../../../../_mixin';
+@import '../../../../../_variables';
+
+.admin__article__edit {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .edit__field {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: $primary-dark;
+    padding: 1rem;
+
+    .image {
+      width: 100%;
+      max-width: 20rem;
+    }
+
+    .edit__buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+
+  .edit__field--horizontal {
+    flex-direction: row;
+  }
+
+  .edit__verified {
+    align-items: center;
+  }
+}

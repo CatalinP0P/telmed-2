@@ -1,0 +1,27 @@
+@import '../../../_mixin';
+@import '../../../_variables';
+
+.category__card {
+  background-color: $secondary;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  max-width: 30rem;
+  width: 100%;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+
+  @include sm {
+    font-size: 1.5rem;
+  }
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+
+  &:hover {
+    background-color: $secondary-dark;
+  }
+
+  &:active {
+    opacity: 0.25;
+  }
+}

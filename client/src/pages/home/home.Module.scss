@@ -8,6 +8,11 @@
   gap: 1rem;
   flex: 1;
   padding: 2rem 0;
+  align-items: center;
+
+  @include sm {
+    align-items: start;
+  }
 
   .home__title {
     font-size: 2rem;

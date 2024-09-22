@@ -7,7 +7,6 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useNavigate } from 'react-router-dom'
 import './home.Module.scss'
 import IsMedic from 'components/layout/isMedic/isMedic'
 import {
@@ -21,11 +20,11 @@ import {
 import { getAuthorizedApi } from 'utils/api'
 import SearchBar from '../../news/components/searchBar/searchBar'
 import { useAuth } from 'context/AuthContext'
+import CategoryCard from 'components/ui/categoryCard/categoryCard'
 
 export default function NewsHome() {
   const { currentUser } = useAuth()
   const { data } = useCategories()
-  const navigate = useNavigate()
   const [recording, setRecording] = useState(false)
   //eslint-disable-next-line
   const mediaRecorderRef = useRef<any>(null)
@@ -189,7 +188,10 @@ export default function NewsHome() {
                 setFormData((old: any) => {
                   if (e.target.files == null) return
 
-                  return { ...old, image: e.target.files[0] }
+                  return {
+                    ...old,
+                    image: e.target.files[0],
+                  }
                 })
               }
             />
@@ -248,15 +250,11 @@ export default function NewsHome() {
         {/* eslint-disable-next-line */}
         {data?.map((category: any) => {
           return (
-            <div
+            <CategoryCard
+              category={category}
               key={category.id}
-              className="category__card"
-              onClick={() => {
-                navigate('/news/' + category.id)
-              }}
-            >
-              {category.title}
-            </div>
+              navigateTo={'/news/' + category.id}
+            />
           )
         })}
       </div>

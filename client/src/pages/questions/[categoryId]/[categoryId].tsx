@@ -7,6 +7,7 @@ import { Button, TextField } from '@mui/material'
 import questionService from 'services/questionService'
 import { useAuth } from 'context/AuthContext'
 import BackButton from 'components/ui/backButton/backButton'
+import QuestionCard from 'components/ui/questionCard/questionCard'
 
 export default function QuestionCategoryID() {
   const { categoryId } = useParams()
@@ -41,17 +42,7 @@ export default function QuestionCategoryID() {
         {data.length > 0
           ? // eslint-disable-next-line
             data.map((question: any) => {
-              return (
-                <div
-                  className="questions__card"
-                  onClick={() =>
-                    navigate('/questions/questionId/' + question.id)
-                  }
-                  key={question.id}
-                >
-                  {question.text}
-                </div>
-              )
+              return <QuestionCard question={question} key={question.id} />
             })
           : !loading && (
               <label className="questionsCategory__info">

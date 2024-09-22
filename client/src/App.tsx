@@ -23,6 +23,14 @@ import NewsQ from 'pages/news/[q]/[q]'
 import QuestionQuestionId from 'pages/questions/questionId/[questionId]/[questionId]'
 import MedicById from 'pages/medic/[id]/[id]'
 import AdminMedic from 'pages/admin/medic/medic'
+import AdminArticles from 'pages/admin/articles/articles'
+import AdminArticleCategory from 'pages/admin/articles/[categoryId]/[categoryId]'
+import AdminArticleId from 'pages/admin/articles/[categoryId]/[articleId]/[articleId]'
+import ArticleEditId from 'pages/news/edit/[id]/[id]'
+import AdminApproveArticles from 'pages/admin/approveArticles/approveArticles'
+import QuestionQuestionIdEdit from 'pages/questions/questionId/[questionId]/edit/edit'
+import AdminMedicEditId from 'pages/admin/medic/edit/[id]/[id]'
+import QuestionResponseEdit from 'pages/questions/questionId/[questionId]/[responseId]/edit/edit'
 
 export default function App() {
   return (
@@ -42,6 +50,23 @@ export default function App() {
             <Route path="/admin/categories" element={<AdminCategories />} />
             <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/admin/medic" element={<AdminMedic />} />
+            <Route
+              path="/admin/medic/edit/:id"
+              element={<AdminMedicEditId />}
+            />
+            <Route path="/admin/articles" element={<AdminArticles />} />
+            <Route
+              path="/admin/aprove-articles"
+              element={<AdminApproveArticles />}
+            />
+            <Route
+              path="/admin/articles/:categoryId"
+              element={<AdminArticleCategory />}
+            />
+            <Route
+              path="/admin/articles/edit/:articleId"
+              element={<AdminArticleId />}
+            />
 
             {/* Medic */}
             <Route path="/medic" element={<MedicHome />} />
@@ -56,6 +81,14 @@ export default function App() {
             <Route path="/questions/q/:q" element={<QuestionQ />} />
             <Route path="/categories" element={<Categories />} />
             <Route
+              path="/questions/questionId/:id/edit"
+              element={<QuestionQuestionIdEdit />}
+            />
+            <Route
+              path="/questions/questionId/:id/:responseId/edit"
+              element={<QuestionResponseEdit />}
+            />
+            <Route
               path="/questions/questionId/:id"
               element={<QuestionQuestionId />}
             />
@@ -64,6 +97,7 @@ export default function App() {
             <Route path="/news" element={<NewsHome />} />
             <Route path="/news/:categoryId" element={<NewsCategory />} />
             <Route path="/news/q/:q" element={<NewsQ />} />
+            <Route path="/news/edit/:id" element={<ArticleEditId />} />
 
             {/* Other */}
             <Route path="/contact" element={<ContactHome />} />

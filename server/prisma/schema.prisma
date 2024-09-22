@@ -54,14 +54,15 @@ model MedicReview {
 }
 
 model NewsArticle {
-  id         Int     @id @unique @default(autoincrement())
+  id         Int      @id @unique @default(autoincrement())
   categoryId Int
   userId     String
   title      String
-  text       String  @db.Text
+  text       String   @db.Text
   imageURL   String?
   videoURL   String?
   audioURL   String?
+  confirmed  Boolean? @default(false)
 }
 
 model Admin {

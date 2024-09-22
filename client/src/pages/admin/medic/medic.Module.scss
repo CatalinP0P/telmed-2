@@ -88,7 +88,7 @@
 
     .table__header {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(13, 1fr);
 
       .table__col {
         background-color: $primary-dark;
@@ -98,7 +98,16 @@
 
     .table__row {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(13, 1fr);
+    }
+
+    .table__col--edit {
+      color: white;
+      cursor: pointer;
+
+      * {
+        pointer-events: none;
+      }
     }
   }
 }

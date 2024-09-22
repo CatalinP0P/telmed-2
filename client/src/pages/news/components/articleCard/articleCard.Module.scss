@@ -3,6 +3,8 @@
 
 .article__card {
   padding: 1rem;
+  color: black;
+  position: relative;
   background-color: $black-5;
   border-radius: 0.5rem;
   display: flex;
@@ -39,4 +41,17 @@
       background-color: $black-15;
     }
   }
+
+  .card__edit__icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    color: black;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}
+
+.article__card--click {
+  cursor: pointer;
 }

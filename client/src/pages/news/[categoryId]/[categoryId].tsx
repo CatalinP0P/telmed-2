@@ -27,9 +27,13 @@ export default function NewsCategory() {
       </label>
       <div className="newsCategory__articles">
         {/* eslint-disable-next-line */}
-        {articles?.map((article: any) => {
-          return <ArticleCard article={article} key={article.id} />
-        })}
+        {articles
+          //eslint-disable-next-line
+          ?.filter((m: any) => m.confirmed)
+          //eslint-disable-next-line
+          .map((article: any) => {
+            return <ArticleCard article={article} key={article.id} />
+          })}
       </div>
     </div>
   )

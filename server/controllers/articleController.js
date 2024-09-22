@@ -1,6 +1,13 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
+export const getById = async (id) => {
+  const article = await prisma.newsArticle.findFirst({
+    where: { id: parseInt(id) },
+  })
+  return article
+}
+
 export const getFromCategory = async (categoryId) => {
   const news = await prisma.newsArticle.findMany({
     where: {
@@ -54,8 +61,39 @@ export const create = async (
   return response
 }
 
+export const update = async (id, data) => {
+  var body = { ...data }
+  if (data.confirmed != null) {
+    body = { ...body, confirmed: data.confirmed == 'true' }
+  }
+
+  const response = await prisma.newsArticle.update({
+    where: {
+      id: parseInt(id),
+    },
+    data: {
+      ...body,
+    },
+  })
+
+  return response
+}
+
+export const getNotVerified = async () => {
+  const response = await prisma.newsArticle.findMany({
+    where: {
+      confirmed: false,
+    },
+  })
+
+  return response
+}
+
 export default {
+  getById,
   getFromCategory,
   getByText,
   create,
+  update,
+  getNotVerified,
 }

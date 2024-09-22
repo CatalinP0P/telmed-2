@@ -1,6 +1,6 @@
 export const siteMap = [
   {
-    title: 'Medici',
+    title: 'Medici Specialisti',
     link: '/medic',
   },
   {

@@ -9,6 +9,14 @@ const getFromQuestion = async (questionId) => {
   return response
 }
 
+const getFromId = async (id) => {
+  const response = await prisma.questionResponse.findFirst({
+    where: { id: parseInt(id) },
+  })
+
+  return response
+}
+
 const create = async (userId, questionId, text) => {
   const response = await prisma.questionResponse.create({
     data: { userId, questionId: parseInt(questionId), text },
@@ -37,9 +45,29 @@ const removeAllFromQuestion = async (questionId) => {
   return response
 }
 
+const getResponsesFromUser = async (userId) => {
+  const response = await prisma.questionResponse.findMany({
+    where: {
+      userId,
+    },
+  })
+
+  return response
+}
+
+const edit = async (id, data) => {
+  return await prisma.questionResponse.update({
+    where: { id: parseInt(id) },
+    data,
+  })
+}
+
 export default {
   getFromQuestion,
   create,
   removeAllFromUser,
   removeAllFromQuestion,
+  getResponsesFromUser,
+  getFromId,
+  edit,
 }

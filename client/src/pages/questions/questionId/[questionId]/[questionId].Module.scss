@@ -6,7 +6,7 @@
   padding: 2rem 0;
 
   .card__header {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     background-color: $secondary;
     display: flex;
     flex-direction: column;
@@ -19,13 +19,14 @@
   }
 
   .card__body {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     background-color: $secondary-dark;
     flex: 1;
   }
 
   .question__header {
     display: flex;
+    position: relative;
     width: 100%;
     flex-direction: column;
     border-radius: 0.5rem;
@@ -33,6 +34,19 @@
 
     @include md {
       flex-direction: row;
+    }
+
+    .question__edit {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      padding: 0.25rem;
+      transition: all 0.25s ease-out;
+
+      &:active {
+        opacity: 0.2;
+      }
     }
   }
 
@@ -44,10 +58,24 @@
 
     .response__card {
       display: flex;
+      position: relative;
       width: 100%;
       flex-direction: column;
       border-radius: 0.5rem;
       overflow: hidden;
+
+      .card__edit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.5rem;
+        transition: all 0.25s ease-out;
+        cursor: pointer;
+
+        &:active {
+          opacity: 0.2;
+        }
+      }
 
       @include md {
         flex-direction: row;
